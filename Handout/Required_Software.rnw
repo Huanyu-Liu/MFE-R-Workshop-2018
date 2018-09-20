@@ -1,0 +1,112 @@
+\documentclass{article}
+
+\usepackage{graphicx} 
+\usepackage{geometry} 
+\geometry{left=1in, right=1in, top=1in, bottom=1in}
+\usepackage{hyperref}
+\usepackage{parskip}
+\linespread{1.2}
+
+
+\begin{document} % -------------------------------------------------------------
+
+\begin{center}
+\Large \bfseries R Requirements for MFE Students
+\end{center}
+
+\bigskip
+
+\subsection*{Intro} % ----------
+
+This document will walk you through various pieces of software that you need to download in order to get up and running with R. These include the R language itself, as well as a friendly environment (RStudio) in which to write your R code (this is called an ``integrated developement environemt'' or IDE for short). In addition, we ask that you have a Latex installation on your computer (for writing fancy math) and that your R environment is capable of producing RMarkdown documents (these are a great way to do your homework).
+
+\subsection*{R} % ----------
+
+R is software for data analysis. It's like Python, but geared toward statistical work; it's like Stata, but better for programming; it's like Matlab, but free.
+ 
+You need to download and install R onto your computer. R is hosted on the ``Comprehensive R Archive Network'' (aka CRAN). It's not the prettiest website out there. To download R, go to \url{https://cran.r-project.org/} and click on the download link for your operating system (Linux, Mac OSX, or Windows). Depending on your OS, you'll be taken to a second page where you have to choose which ``version'' or ``package'' to download. Linux users should choose their flavor of Linux (Debian, Ubuntu, etc.); Mac users should pick the top link (R-3.5.1.pkg); Windows users should choose ``Base''. You might have to click through one more page -- just get the recommended version for your OS. After R downloads, install it as you would any other piece of software.
+
+Once you've installed R, open up the application. It will be basic. You'll get one floating window called the ``R Console'' or ``R Terminal'' with a bunch of text and a command prompt.
+
+\begin{center}
+    \includegraphics[width=0.5\linewidth,keepaspectratio]{r_console.png}
+\end{center}
+
+At the prompt (which looks like a greater-than sign, $>$) type \texttt{2+2} and hit enter. R will talk back to you, telling you \texttt{4}, like so:
+
+<<>>=
+2+2
+@
+
+This works, but it's a pretty unfriendly way to use R, so close the R application. To make the experience with R friendlier, you'll want an IDE. My favorite IDE for R is RStudio. You're welcome to use any IDE that you like, but this document will be specific to RStudio.  (You'll have to figure out the rest of this on your own if you go with another IDE like Atom or Visual Studio.)
+
+\subsection*{RStudio} % ----------
+
+You need to download and install RStudio. To do so, go to \url{https://www.rstudio.com/}. At the top, click on ``Products'' and then ``RStudio''. Choose ``Desktop'' and then ``Download RStudio Desktop''. Once downloaded, install it.
+
+Now open up RStudio. It should find the R application you previously installed. It's running that application (R), but now with a much prettier interface:
+
+\begin{center}
+    \includegraphics[width=0.5\linewidth,keepaspectratio]{rstudio_screenshot.png}
+\end{center}
+
+On the left side of the screen in a window called ``Console'', again type \texttt{2+2} and hit enter. R will return \texttt{4}.
+
+Next, type:
+
+<<>>=
+x = 3+7
+@
+
+Now you'll see the object \texttt{x} in the ``Environment'' window on the top right. Go back to the console on the left and type \texttt{x} and hit return. R will return \texttt{10}.
+
+\subsection*{RMarkdown} % ----------
+
+Let's say we don't want to just write R code, but we want the code, some results from our code, and some floating text (like paragraphs explaining what the code does) all to show up in the same document. RMarkdown is a way to make that kind of document.
+
+Unlike what-you-see-is-what-you-get programs like Microsoft Word, with RMarkdown you ``code'' your document, including the document's contents and its formatting. That means, for example, that you write ``\\beta'' and when you compile the document, you see ``$\beta$''. Or, as another example, you code \_word\_ in order to set ``word'' in italics, like so: \emph{word}. For a little intro on the RMarkdown language, check out this site: \url{https://rmarkdown.rstudio.com/lesson-1.html}.
+
+You don't need to install anything for RMarkdown; it's built into RStudio. In RStudio, click on the dropdown arrow next to the icon for a new document (this is at the top left of RStudio), then choose ``RMarkdown''. The first time you do this RStudio will tell you that it needs to install packages, say yes/ok and let those install. 
+
+If there is any error with this step, go to the bottom right window in RStudio and click on the tab called ``Package''. Then click ``Install''. Type ``rmarkdown'' (all lowercase and without the quotes) and click ``Install''. 
+
+Once you've got the packages installed, go back to the blank page icon at the top left and create a new RMarkdown document. A diaglog box will pop up asking for you to provide a document title and author, it also gives you the option to select ``html'' or ``pdf'', among other things. 
+
+\begin{center}
+    \includegraphics[width=0.5\linewidth,keepaspectratio]{rmarkdown_popup.png}
+\end{center}
+
+Right now, you have enough software to make an html document, but you don't have enough to create a pdf. For that, you need Latex. Hit ``Cancel'' and quit RStudio; let's go get LaTeX.
+
+\subsection*{LaTeX} % ----------
+
+This can get complicated fast, so let me try to provide you with just the right information. TeX is a computer program for typesetting documents. Whereas RMarkdown is basic and easy to use, TeX is super-unfriendly to use. But, TeX is like Microsoft Word for people who write math -- everybody in academia uses TeX -- so we need to learn how to use it as well. 
+
+Thankfully someone made LaTeX (pronounced la-tech). LaTeX is a set of macros for TeX that takes the experience of working with TeX from horrible to somewhat-manageable (there is no good/fun way to do TeX/LaTeX). You need to install LaTeX and doing so will automatically install TeX for you. LaTeX has a bunch of different ``flavors'' named MacTex or MikTex -- they're all basically the same.
+
+I don't remember all the steps to install LaTeX and they vary from OS to OS. So, for Mac users, google ``install MacTex''. For Windows users, google ``install MikTex''. For Linux users, your distro likely already has LaTeX, but if not, type the following into the Bash shell: \texttt{sudo apt-get install texlive}. Regardless of which OS you're on, this should be a simple process -- just download and install like anything else.
+
+We'll be using TeX/LaTeX as an intermediate step when creating pdf documents. In fact, if we do everything right, you may not even notice that TeX is being used. However, if you want to write LaTeX documents and compile straight to pdf, you can download an editor for LaTeX (this is like how we will use RStudio for R). I use TexMaker on Windows, but there are lots of options, and you should feel free to get whichever you like (or none of them).
+
+\subsection*{Getting It All Working} % ----------
+
+Let's see if we can get everything working, and to test that, we'll use the RMD version of the homework template.
+
+On your computer, create a new directory (also known as a folder) and put the RMD version of the homework template in that directory. Open RStudio (if you closed it earlier). Go to RStudio's ``Tools'' menu and click ``Global Options''. Click ``Sweave'' on the left and then change the top dropdown from ``Sweave'' to ``Knitr''. Then exit global options.
+
+Open the homework template RMD file. A new window should open in RStudio on the top-left. Click the ``Knit'' button in the top-middle (on newer versions of RStudio, this will say ``Compile PDF'' instead of ``knit''). A new tab will open near the ``Console'' in the bottom-left called ``RMarkdown''. If everything works, in a couple seconds, a PDF will pop up. If not, there will be an error message in the ``RMarkdown'' tab. If you get an error, Google that error and try to fix your problem.
+
+For any other problems, contact me.
+
+\bigskip
+
+\textbf{-Dan Yavorsky}
+
+Office: Room B401
+
+Email: dyavorsky@gmail.com 
+
+Cell: 951-201-0927
+
+
+\end{document}

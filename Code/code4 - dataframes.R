@@ -32,9 +32,11 @@
     head(df1)
     tail(df1)
     str(df1)
-    View(df1)
+    View(df1) # <-- new window!  
     
 # Factor?
+    
+    class(df1$col3)
     
     model.matrix( ~ 0 + df1$col3)
     
@@ -48,9 +50,10 @@
         col1 = 1:10,
         col2 = round(runif(10, 25, 75), 2),
         col3 = sample(letters[1:4], 10, replace=T),
-        stringsAsFactors = FALSE       #<-- VERY IMPORTANT ARG!
+        stringsAsFactors = FALSE       # <-- VERY IMPORTANT ARG!
     )
     str(df3)
+    class(df3$col3)
     
 # subset - extract columns like they're list elements
     # dollar sign
@@ -207,6 +210,17 @@ rm(list=ls())
     
     spread(df_long2, key=gender, value=test_score) # SOOO MUCH BETTER!
     
+    
+# getting data in/out of R (the super-short version)
+    
+    # very common
+    my_df <- read.csv("path/to/file/filename.extension", stringsAsFactors = FALSE)
+    
+    # save a file
+    save(my_df, file="path/to/file/filename.RData")
+    
+    # read R Data back in
+    load("path/to/file/filename.RData") # it will be called "my_df"
 
 
 

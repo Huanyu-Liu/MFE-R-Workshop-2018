@@ -10,8 +10,8 @@ mylist <- list <- list(
     mylist[1]
     
     class(mylist$alpha) # int
-    class(mylist[[1]])  # list <--- watch out!
-    class(mylist[1])    # int
+    class(mylist[[1]])  # int
+    class(mylist[1])    # list <--- watch out!
 
     mylist$beta[4,3]
     mylist[["beta"]][4,3]

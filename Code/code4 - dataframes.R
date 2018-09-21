@@ -27,25 +27,28 @@
     nrow(df1)
     dim(df1)
     names(df1)
+    colnames(df1)
+    rownames(df1)
     head(df1)
     tail(df1)
     str(df1)
+    View(df1)
     
 # Factor?
     
-    model.matrix( ~ df1$col3)
-    
-    table(df1$col3)
+    model.matrix( ~ 0 + df1$col3)
     
     levels(df1$col3)
     
     as.integer(df1$col3)
     
+    table(df1$col3)
+    
     df3 <- data.frame(
         col1 = 1:10,
         col2 = round(runif(10, 25, 75), 2),
         col3 = sample(letters[1:4], 10, replace=T),
-        stringsAsFactors = FALSE
+        stringsAsFactors = FALSE       #<-- VERY IMPORTANT ARG!
     )
     str(df3)
     
@@ -55,6 +58,7 @@
     
     # double brackets
     df1[[2]]
+    class(df1[[2]])
     df1[["col2"]]
     df1[[col2]] # error -- what is the object 'col2'? it doesn't exist
     
@@ -76,7 +80,7 @@
     colnamevec <- c("col2", "col3")
     df1[1:3, colnamevec]
     
-    df1[df$col2 < 50, ]
+    df1[df1$col2 < 50, ]
     
 # create a new column
     df1$newcol <- df1$col1 + df1$col2
@@ -85,8 +89,10 @@
     
     # same name overwrites the column
     df1$newcol <- df1$newcol * 2
+    df1
     
     df1$newcol <- NULL
+    df1
     
     # replace just some values
     df1[df1$col1<5, "col1"] <- 96:99
@@ -100,8 +106,9 @@
     df1 <- df1[order(df1$col1), ]
     
 # reorder columns 
-    neword <- sort(names(df1), decreasing = TRUE)
-    
+    new_ord <- sort(names(df1), decreasing = TRUE)
+    df1 <- df1[ , new_ord]
+    df1
     
 # ------------------
 rm(list=ls())
@@ -116,7 +123,6 @@ rm(list=ls())
         cc = LETTERS[1:4],
         stringsAsFactors = F
     )
-    df1
     
     df2 <- data.frame(
         aa = 2:5,
@@ -124,6 +130,8 @@ rm(list=ls())
         cc = LETTERS[23:26],
         stringsAsFactors = F
     )
+    
+    df1
     df2
     
     # stack on top, must have same rownames
@@ -131,6 +139,7 @@ rm(list=ls())
     
     # align side-by-side, not usually what you want to do
     names(df2)[2:3] <- c("pp", "qq")
+    df2
     cbind(df1, df2)
 
     # merge (aka "join")

@@ -32,6 +32,7 @@
     head(df1)
     tail(df1)
     str(df1)
+    summary(df1)
     View(df1) # <-- new window!  
     
 # Factor?

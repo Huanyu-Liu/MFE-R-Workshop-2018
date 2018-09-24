@@ -65,6 +65,19 @@
          col = fancy[mtcars$cyl]
          )
     
+# histograms
+    
+    somedata <- rnorm(1000, mean=3, sd=5)
+    
+    hist(somedata)
+    
+    hist(somedata, col="blue", border="grey", main="Title", xlab="Random Draws", ylab="", breaks=50)
+    hist(somedata, col="blue", border="grey", main="Title", xlab="Random Draws", ylab="", breaks=-20:20)
+    
+    abline(v=3, col="red", lwd=3)
+    
+    text(3.1, 80, "True Mean = 3", col="red", pos=4)
+    
 ## PROBLEM SET 6
     
     # Use the 'diamonds' dataset in the 'ggplot2' to make the following plot:

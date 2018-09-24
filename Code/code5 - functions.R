@@ -60,6 +60,88 @@
 
 
 # CONTROL STATEMENTS
+    # if, else, and ifelse
+    if(1:10 == 2) {
+        print("Yes")
+    } else {
+        print("No")
+    }
+    
+    ifelse(1:10 == 2, "yes", "no")
+    
+    # with assignment
+    x <- if(any(1:10 == 2)) {
+        sum(1:10==2)
+    } else {
+        "none"
+    }
+    
+    if(any(1:10 == 2)) {
+        x <- sum(1:10==2)
+    } else {
+        x <- "none"
+    }
+    
+    y <- ifelse(1:10 == 2, "is 2", "not two")
+    
+    ifelse(1:10 == 2, y <- "is 2", y <- "not two")
     
     
+    # loops
+    for (i in 1:5) {
+        print(paste("My number is", i))
+    }
+    i
+    
+    for (i in 1:5) {
+        paste("My number is", i)
+    }
+    
+    for (i in 1:3) print(i+2)
+    
+    
+    x <- letters[1:4]
+    for (i in x) {
+        print(i)
+    }
+    i
+    
+    result_list <- vector(mode="list", length=10)
+    for (i in seq(result_list)) {
+        result_list[i] <- i*100
+    }
+    unlist(result_list)
+
+    
+    
+## PROBLEM SET 5
+    # This function should replace NAs with zeros. Finish it by replacing the ...'s
+    na_to_zero <- function(vec_with_nas) {
+        stopifnot(is.vector(...))
+        fixed_vec <- ifelse(is.na(...), ..., ...)
+        return(fixed_vec)
+    }
+    
+    # Write a function that takes in a dataframe and calculates the correlation 
+    # between the first column and every other column.
+    set.seed(234)
+    example_df <- mapply(function (x) sample(1:100, 10, T), 1:5)
+    
+    corr_with_col1 <- function(...) {
+        ...
+    }
+    
+    # Use an apply function and an anonymous function to calculate sum(x^2 - 10) 
+    # for each vector in the following list
+    testlist <- list(
+        x1 = 1:10,
+        x2 = 11:20,
+        x3 = 21:30
+    )
+    
+    
+    
+    
+    
+        
     
